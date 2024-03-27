@@ -17,8 +17,11 @@ public class CctvMain {
         Job job = Job.getInstance(conf, "cctv");
         job.setJarByClass(CctvMain.class);
 
+        // job.setNumReduceTasks(1);
+
         job.setMapperClass(CctvMapper.class);
         job.setCombinerClass(CctvReducer.class);
+        job.setPartitionerClass(CctvPartitioner.class);
         job.setReducerClass(CctvReducer.class);
 
         job.setOutputKeyClass(Text.class);
